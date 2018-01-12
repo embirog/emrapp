@@ -1,0 +1,15 @@
+{
+  "dbProperties": {
+    "isMongoDb": false,
+    "mongodbURL": "mongodb://localhost:27017/apiTS",
+    "mongolabURL": "mongodb://localhost:27017/apiTS"
+  },
+  "jwtConfig": {
+    "jwtSecret": "MyS3cr3tK3Y",
+    "jwtSession": {
+      "session": false
+    },
+    "isAuthEnabled": false,
+    "expiresIn": "1d"
+  }
+}
