@@ -135,7 +135,6 @@ class ExpressApp {
     } else {
       this.express.use('/api/users', new UserRouter().router);
     }
-    this.express.use('/', new AppRouter().router);
     this.express.use('/api', new AppRouter().router);
   }
 }

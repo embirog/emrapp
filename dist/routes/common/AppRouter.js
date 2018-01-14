@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const AuthController_1 = require("../../controllers/common/auth/AuthController");
 class AppRouter {
     constructor() {
         this.router = express_1.Router();
@@ -8,7 +9,7 @@ class AppRouter {
     }
     init() {
         // this.router.get('/', AppController.getAllLinks);
-        // this.router.post('/login', AuthController.loginUser);
+        this.router.post('/login', AuthController_1.default.loginUser);
     }
 }
 exports.AppRouter = AppRouter;

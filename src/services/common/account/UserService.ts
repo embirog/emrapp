@@ -57,6 +57,18 @@ export class UserService {
             });
     }
 
+    getUserByEmail(email: string, cols: string) {
+        
+        return User.findOne({ 'contactInfo.email': email }, { _id: 0 })
+            .limit(constants.QUERY_LIMIT)
+            .select(constants.USER_DEFAULT_COLS_BYEMAIL)
+            .exec()
+            .then((user) => {
+                response.payload = user;
+                return response;
+            });
+    }
+
     createUser(userObj: any) {
         const newuser = new User({
             userName: (userObj.fullName.firstName.charAt(0) +
@@ -87,6 +99,9 @@ export class UserService {
                 newuser.save();
             });
         });
+        // var hash = bcrypt.hashSync(userObj.password, 10);
+        // newuser.password = hash;
+        newuser.save();
         return response;
     }
 

@@ -6,7 +6,8 @@ class ErrorController {
     constructor() { }
     processError(error) {
         const response = { code: constants.FAILED_CODE, message: constants.FAILED_DESC };
-        response.message = error;
+        let message = error.message || error;
+        response.message = message;
         return response;
     }
 }

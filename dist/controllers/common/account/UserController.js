@@ -49,6 +49,10 @@ const UserController = {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let data = req.body;
+                response = yield userService.getUserByEmail(data.contactInfo.email, null);
+                if (response.payload != null) {
+                    throw new Error("User already Exist!");
+                }
                 response = yield userService.createUser(data);
                 return res.status(httpVal.POST_CREATED).json(response);
             }

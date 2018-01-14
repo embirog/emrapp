@@ -39,6 +39,10 @@ const UserController = {
     async createUser(req: Request, res: Response) {
         try {
             let data = req.body;
+            response = await userService.getUserByEmail(data.contactInfo.email, null);
+            if (response.payload != null) {
+                throw new Error("User already Exist!");
+            }
             response = await userService.createUser(data);
             return res.status(httpVal.POST_CREATED).json(response);
         } catch (error) {

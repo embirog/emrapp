@@ -35,8 +35,9 @@ class Constants {
         this.KEY_HREF = "href";
         this.KEY_EMP_DETAILS = "employeeDetails";
         this.PROFILECODE_ADMIN = "PF2017000000";
-        this.USER_DEFAULT_COLS = "userName fullName contactInfo personalInfo addressInfo";
+        this.USER_DEFAULT_COLS = "userName fullName contactInfo personalInfo addressInfo userType password";
         this.USER_DEFAULT_COLS_ALL = "_id userName status userType fullName contactInfo personalInfo addressInfo";
+        this.USER_DEFAULT_COLS_BYEMAIL = "userName fullName contactInfo userType password";
         this.TableAlias = {
             UserContactInfo: "contactInfo",
             UserEmployeeInfo: "employeeInfo",

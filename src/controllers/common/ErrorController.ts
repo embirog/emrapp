@@ -9,7 +9,8 @@ export class ErrorController {
 
   processError(error: any) {
     const response: ResponseObj = { code: constants.FAILED_CODE, message: constants.FAILED_DESC }
-    response.message = error;
+    let message = error.message || error;  
+    response.message = message;
     return response;
   }
 }

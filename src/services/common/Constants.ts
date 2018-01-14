@@ -19,7 +19,7 @@ export class Constants {
         code: this.SUCCESS_CODE,
         message: this.SUCCESS_DESC
     };
-    
+
     public FAILED_CODE_NODATA = '100001';
     public FAILED_DESC_NODATA = 'No record found!';
 
@@ -50,9 +50,9 @@ export class Constants {
 
     public PROFILECODE_ADMIN = "PF2017000000";
 
-    public USER_DEFAULT_COLS = "userName fullName contactInfo personalInfo addressInfo";
+    public USER_DEFAULT_COLS = "userName fullName contactInfo personalInfo addressInfo userType password";
     public USER_DEFAULT_COLS_ALL = "_id userName status userType fullName contactInfo personalInfo addressInfo";
-
+    public USER_DEFAULT_COLS_BYEMAIL = "userName fullName contactInfo userType password";
     public TableAlias = {
         UserContactInfo: "contactInfo",
         UserEmployeeInfo: "employeeInfo",
@@ -85,6 +85,6 @@ export class Constants {
         DELETE: "DELETE"
     }
 
-   
+
 }
 
