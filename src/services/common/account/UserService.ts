@@ -8,12 +8,10 @@ let constants = new Constants();
 let response: ResponseObj;
 
 const DEFAULT_USER_SORTBY = "userName";
-// const DEFAULT_USER_COLS = "userName fullName contactInfo personalInfo addressInfo";
 
 export class UserService {
 
     logger: any;
-    // response = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
 
     constructor() {
         this.logger = winston;
@@ -29,7 +27,6 @@ export class UserService {
 
         let sortCriteria: string = sortby || DEFAULT_USER_SORTBY;
         let colsCriteria: string = cols || constants.USER_DEFAULT_COLS;
-        // response = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
 
         return User.find({ status: 'ACTIVE' })
             .limit(constants.QUERY_LIMIT)
@@ -49,7 +46,6 @@ export class UserService {
      */
     getUser(id: string, cols: string) {
         let colsCriteria: string = cols || constants.USER_DEFAULT_COLS;
-        // const response: ResponseObj = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
 
         return User.findOne({ 'userName': id })
             .limit(constants.QUERY_LIMIT)
@@ -62,21 +58,30 @@ export class UserService {
     }
 
     createUser(userObj: any) {
-        // response = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
         const newuser = new User({
             userName: (userObj.fullName.firstName.charAt(0) +
                 userObj.fullName.lastName).toLowerCase() +
                 (Date.now() / 1000 | 0),
-            password: userObj.password,
-
-            fullName: userObj.fullName,
-            contactInfo: userObj.contactInfo,
-            personalInfo: userObj.personalInfo,
-            addressInfo: userObj.addressInfo
+            userType: userObj.userType,
+            status: 'ACTIVE',
+            createdBy: userObj.createdBy,
+            createdDate: Date.now()
         });
+        if (userObj.fullName != null) {
+            newuser.fullName = userObj.fullName;
+        }
+        if (userObj.contactInfo != null) {
+            newuser.contactInfo = userObj.contactInfo;
+        }
+        if (userObj.personalInfo != null) {
+            newuser.personalInfo = userObj.personalInfo;
+        }
+        if (userObj.addressInfo != null) {
+            newuser.addressInfo = userObj.addressInfo;
+        }
 
         bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newuser.password, salt, (err, hash) => {
+            bcrypt.hash(userObj.password, salt, (err, hash) => {
                 if (err) throw err;
                 newuser.password = hash;
                 newuser.save();
@@ -86,7 +91,6 @@ export class UserService {
     }
 
     updateUser(id: string, userDetails: any) {
-        // response = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
         return User.findOne({ 'userName': id })
             .limit(constants.QUERY_LIMIT)
             .select({})
@@ -103,7 +107,6 @@ export class UserService {
     }
 
     deleteUser(id: string) {
-        // response = { code: constants.SUCCESS_CODE, message: constants.SUCCESS_DESC }
         return User.remove({ 'userName': id })
             .exec()
             .then((user) => {

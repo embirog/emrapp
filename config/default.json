@@ -2,7 +2,7 @@
   "dbProperties": {
     "isMongoDb": false,
     "mongodbURL": "mongodb://localhost:27017/apiTS",
-    "mongolabURL": "mongodb://localhost:27017/apiTS"
+    "mongolabURL": "mongodb://emruser:password@ds161823.mlab.com:61823/emrappdb"
   },
   "jwtConfig": {
     "jwtSecret": "MyS3cr3tK3Y",

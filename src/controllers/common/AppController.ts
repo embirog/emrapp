@@ -13,17 +13,6 @@ const AppController = {
     try {
         let baseUrl: String = constants.BASE_URL;
         let response: ResponseObj = {};
-        // let routes = constants.routes;
-        // let links: any = {
-        //     "apihome" : baseUrl.concat(constants.routes.apihome),
-        //     "employees" : baseUrl.concat(constants.routes.employees),
-        //     "queries": baseUrl.concat(constants.routes.queries),
-        //     "profiles" : baseUrl.concat(constants.routes.profiles),
-        //     "users" : baseUrl.concat(constants.routes.users),
-        //     "access" : baseUrl.concat(constants.routes.access)
-        // };
-        // response = constants.RESPONSEOBJ_SUCCESS;
-        // response.links = links;  
 
         return res.status(200).json(response);
     } catch (error) {

@@ -1,6 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import AppController from '../../controllers/common/AppController';
-// import AuthController from '../../controllers/common/auth/AuthController';
 
 export class AppRouter {
   router: Router
@@ -11,7 +10,7 @@ export class AppRouter {
   }
 
   init() {
-    this.router.get('/', AppController.getAllLinks);
+    // this.router.get('/', AppController.getAllLinks);
     // this.router.post('/login', AuthController.loginUser);
   }
 

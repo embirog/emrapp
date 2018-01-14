@@ -4,9 +4,6 @@ const changed        = require('gulp-changed');
 const nodemon        = require('gulp-nodemon');
 const livereload     = require('gulp-livereload');
 const sequence       = require('gulp-sequence')
-//const gulpHandlebars = require('gulp-handlebars')
-//const handlebars     = require('handlebars')
-//const defineModule   = require('gulp-define-module')
 
 // pull in the project Typescript config
 const tsProject = ts.createProject('tsconfig.json', {

@@ -1,4 +1,3 @@
-// import { UserProfile } from './../../models/common/access/UserProfile';
 import { ResponseObj } from './../../models/common/base/RespModel';
 
 export class Constants {
@@ -86,24 +85,6 @@ export class Constants {
         DELETE: "DELETE"
     }
 
-    // public routes = {
-    //     home: "/",
-    //     apihome: "/api",
-    //     employees: "/api/employees",
-    //     queries: "/api/queries",
-    //     profiles: "/api/profiles",
-    //     users: "/api/users",
-    //     access: "/api/access"
-    // }
-
-    // public columnsToExclude = {
-    //     EXCLUDE_PROFILE_COLS: ['createdby', 'createddate', 'updatedby', 'updateddate', 'version'],
-    //     EXCLUDE_USERSEC_COLS: ['version'],
-    //     EXCLUDE_ACCESS_RIGHTS_COLS: ['createdby', 'createddate', 'updatedby', 'updateddate', 'version'],
-    //     EXCLUDE_USER_COLS: ['creator', 'created', 'modifier', 'modified', 'suffix', 'title'],
-    //     EXCLUDE_CONTACTINFO_COLS: ['address2', 'address3', 'zipcode', 'manid'],
-    //     EXCLUDE_EMPINFO_COLS: ['teamleader', 'projectmanager', 'maturity', 'gmc', 'costrateid', 'manid'],
-    //     EXCLUDE_ASSIGNMENT_COLS: ['familycode', 'locationcode', 'manid']
-    // }
+   
 }
 

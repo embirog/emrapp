@@ -1,7 +1,7 @@
 import mongoose = require("mongoose");
 
 interface IUser {
-	userName?: string;
+    userName?: string;
     password?: string;
     manID?: string;
 
@@ -75,10 +75,10 @@ const userSchema = new mongoose.Schema({
         'addressName': { type: String, required: false },
         'zipCode': { type: String, required: false }
     },
-    'userType': { type: String, required: true, default: 'INTERNAL' },
+    'userType': { type: String, required: true },
     'lastLoginDate': Date,
-    'status': { type: String, required: true, default: 'ACTIVE' },
-    'createdBy': { type: String, required: false, default: 'SYSTEM' },
+    'status': { type: String, required: true },
+    'createdBy': { type: String, required: false },
     'createdDate': { type: Date, default: Date.now() },
     'updatedBy': { type: String, required: false },
     'updatedDate': { type: Date }

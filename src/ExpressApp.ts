@@ -1,10 +1,5 @@
 import { UserRouter } from './routes/common/account/UserRouter';
-// import { EmployeesRouter } from './common/EmployeesRouter';
-// import { TablesRouter } from './common/TablesRouter';
-// import { ProfileRouter } from './common/account/ProfileRouter';
-// import { AccessRouter } from './common/account/AccessRouter';
 import { AppRouter } from './routes/common/AppRouter';
-// import { PassportConfig } from './config/passport';
 import passportcfg from './config/passport';
 
 import * as express from 'express';
@@ -16,7 +11,6 @@ import * as config from 'config';
 import * as helmet from 'helmet';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
-// var mongoose = require('mongoose');
 
 // Creates and configures an ExpressJS web server.
 class ExpressApp {
@@ -56,8 +50,6 @@ class ExpressApp {
         process.exit();
       });
     } else {
-      //mongodb://<dbuser>:<dbpassword>@ds161823.mlab.com:61823/emrappdb
-      
 
       /* 
        * Mongoose by default sets the auto_reconnect option to true.
@@ -70,7 +62,7 @@ class ExpressApp {
         replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }
       };
   
-      var mongodbUri = 'mongodb://emruser:password@ds161823.mlab.com:61823/emrappdb';
+      var mongodbUri = this.dbProperties.mongolabURL;
   
       mongoose.connect(mongodbUri, options);
       var conn = mongoose.connection;
@@ -79,7 +71,7 @@ class ExpressApp {
   
       conn.once('open', function () {
         // Wait for the database connection to establish, then start the app.        
-        console.log('Wait for the database connection to establish, then start the app.                         ')                 
+        console.log('MongoLAB Connected!')                 
       });
     }
   }
@@ -139,23 +131,12 @@ class ExpressApp {
     let isAuthEnabled: boolean = this.cfg.isAuthEnabled;
     let authenticate = passportcfg.authenticate('jwt', this.cfg.jwtSession);
     if (isAuthEnabled) {
-      // let authenticate = passportcfg.authenticate('jwt', this.cfg.jwtSession);
-      // this.express.use('/api/employees', authenticate, new EmployeesRouter().router);
-      // this.express.use('/api/queries', authenticate, new TablesRouter().router);
-      // this.express.use('/api/profiles', new ProfileRouter().router);
       // this.express.use('/api/users', authenticate, new UserRouter().router);
-      // this.express.use('/api/access', authenticate, new AccessRouter().router);
     } else {
-      // this.express.use('/api/employees', new EmployeesRouter().router);
-      // this.express.use('/api/queries', new TablesRouter().router);
-      // this.express.use('/api/profiles', new ProfileRouter().router);
       this.express.use('/api/users', new UserRouter().router);
-      // this.express.use('/api/access', new AccessRouter().router);
     }
     this.express.use('/', new AppRouter().router);
     this.express.use('/api', new AppRouter().router);
-    // this.express.use('/api/register', new UserRouter().router);
-
   }
 }
 
